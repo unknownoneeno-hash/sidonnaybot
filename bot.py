@@ -12,7 +12,7 @@ CAPS_MIN_LETTERS = 68
 CAPS_PERCENT = 0.7
 CAPS_TIMEOUT = 60
 
-TEST_MODE = False
+TEST_MODE = True
 
 WARN_RESET_TIME = 600
 BANNED_TIMEOUT = 600
@@ -209,7 +209,7 @@ def stream_status_loop():
         stream_online = True if TEST_MODE else is_stream_online()
 
         if stream_online and not stream_greeted:
-            sock.send(f"PRIVMSG {CHANNEL} :\r\n".encode())
+            sock.send(f"PRIVMSG {CHANNEL} :bot_connected_to_stream\r\n".encode())
             stream_greeted = True
 
         if not stream_online:
